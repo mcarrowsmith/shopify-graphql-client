@@ -25,13 +25,11 @@ class Client
     }
 
     /**
-     * @param string $query
-     * @param array  $variables
-     *
-     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws Exceptions\JsonException
      * @throws Exceptions\ShopifyGraphQLErrorException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
      */
     public function request(string $query, array $variables = [])
     {
@@ -58,10 +56,9 @@ class Client
     }
 
     /**
-     * @param string $body
+     * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return \Psr\Http\Message\ResponseInterface
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     private function makeRequest(string $body)
     {
