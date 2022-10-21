@@ -16,7 +16,7 @@ class Client
         ClientInterface $http,
         string $shop,
         string $token,
-        string $apiVersion,
+        string $apiVersion
     ) {
         $this->http       = $http;
         $this->shop       = $shop;
