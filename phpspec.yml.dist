@@ -1,0 +1,4 @@
+suites:
+    default:
+        namespace: McArrowsmithPackages\ShopifyGraphQLClient
+        psr4_prefix: McArrowsmithPackages\ShopifyGraphQLClient

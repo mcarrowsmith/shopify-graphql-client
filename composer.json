@@ -1,0 +1,45 @@
+{
+    "name": "mcarrowsmith-packages/shopify-graphql-client",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4 || ^8.0.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.11",
+        "phpspec/phpspec": "^7.2",
+        "phpstan/phpstan": "^1.8",
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "McArrowsmithPackages\\ShopifyGraphQLClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fake\\": "src/Fake/"
+        }
+    },
+    "scripts": {
+        "format": "bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+        "style": "@format --dry-run -v",
+        "phpspec": "bin/phpspec r --no-code-generation --stop-on-failure --no-interaction --format=pretty",
+        "phpstan": " bin/phpstan analyse src --level=5",
+        "test": [
+            "@style",
+            "@phpstan",
+            "@phpspec"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin",
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}
