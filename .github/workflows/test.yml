@@ -1,0 +1,32 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: true
+            matrix:
+                php: [7.4, 8.0]
+                dependency-version: [prefer-lowest, prefer-stable]
+
+        name: PHP ${{ matrix.php }} - ${{ matrix.dependency-version }}
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v2
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    ini-values: error_reporting=E_ALL ^ E_NOTICE ^ E_WARNING
+                    coverage: none
+
+            -   name: Install dependencies
+                run: |
+                    composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+
+            -   name: Execute tests
+                run: composer test
