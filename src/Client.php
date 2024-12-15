@@ -5,7 +5,7 @@ namespace McArrowsmithPackages\ShopifyGraphQLClient;
 use GuzzleHttp\ClientInterface;
 use McArrowsmithPackages\ShopifyGraphQLClient\Exceptions\ShopifyGraphQLErrorException;
 
-class Client
+class Client implements ClientContract
 {
     private ClientInterface $http;
     private string $shop;
